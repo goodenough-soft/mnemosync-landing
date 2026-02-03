@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Opening Mnemosync…</title>
+    <style>
+      body { font-family: system-ui, -apple-system, sans-serif; margin: 40px; }
+      .btn { display: inline-block; padding: 10px 16px; background: #111; color: #fff; border-radius: 6px; text-decoration: none; }
+      .muted { color: #666; margin-top: 12px; }
+    </style>
+  </head>
+  <body>
+    <h1>Opening Mnemosync…</h1>
+    <p>If nothing happens, click the button below.</p>
+    <a id="open" class="btn" href="#">Open Mnemosync</a>
+    <p class="muted">If your browser blocks the redirect, you may need to allow it or click the button.</p>
+    <script>
+      const url = new URL(window.location.href);
+      const params = url.search + (url.hash || "");
+      const deepLink = `mnemosync://auth/callback${params}`;
+      const link = document.getElementById("open");
+      if (link) link.setAttribute("href", deepLink);
+      window.location.replace(deepLink);
+    </script>
+  </body>
+</html>
